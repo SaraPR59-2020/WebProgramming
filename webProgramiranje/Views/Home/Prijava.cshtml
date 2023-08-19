@@ -1,4 +1,4 @@
-﻿@{ 
+﻿@{
     ViewBag.Title = "Servis Studentske Sluzbe";
 }
 <style>
@@ -138,37 +138,7 @@
 <div class="box-form">
     <div class="left">
         <div class="overlay">
-            <h3>PRIJAVA NA SAJT STUDENTSKE SLUZBE</h3>
-            <p>
-                Vodjenje evidencije o studentima, ispitima i profesorima na nasem fakultetu.
-            </p>
-        </div>
-    </div>
-
-    <div class="right">
-        <h1>Login</h1>
-        @if (TempData["Error"] != null)
-        {
-            <div class="alert alert-danger">
-                @TempData["Error"]
-            </div>
-        }
-        <div class="inputs">
-            <form method="post" action="@Url.Action("Login", "Home")">
-
-                @*autocomplete attribute specifies whether or not an input field should have autocomplete enabled*@
-                <table>
-                    <tr>
-                        <td><input type="text" placeholder="Korisnicko ime" autocomplete="off" id="username" name="username" required></td>
-                    </tr>
-                    <tr>
-                        <td><input type="password" placeholder="Lozinka" id="password" name="password" autocomplete="off" required></td>
-                    </tr>
-                    <tr>
-                        <td><input id="btnPrijaviSe" type="submit" value="Prijavi se" autocomplete="off"></td>
-                    </tr>
-                </table>
-            </form>
+            <h3>USPESNO STE PRIJAVLJENI</h3>
         </div>
     </div>
 </div>
