@@ -9,7 +9,7 @@ namespace webProgramiranje.Models
     public class Ispit
     {
         [Required]
-        public Profesor Profesor { get; set; }
+        public string Profesor { get; set; }
 
         [Required]
         [StringLength(100)]

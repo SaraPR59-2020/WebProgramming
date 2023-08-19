@@ -12,7 +12,7 @@ namespace webProgramiranje.Models
         public Ispit Ispit { get; set; }
 
         [Required]
-        public Student Student { get; set; }
+        public string Student { get; set; }
 
         [Required]
         [Range(5, 10)]

@@ -1,0 +1,22 @@
+﻿[
+  {
+    "KorisnickoIme": "2",
+    "BrojIndeksa": "2023/001",
+    "Sifra": "2",
+    "Ime": "Marko",
+    "Prezime": "Marković",
+    "DatumRodjenja": "1999-10-15",
+    "ElektronskaPosta": "marko.markovic@email.com",
+    "ListaIspita": []
+  },
+  {
+    "KorisnickoIme": "3",
+    "BrojIndeksa": "2023/002",
+    "Sifra": "3",
+    "Ime": "Jelena",
+    "Prezime": "Jelenić",
+    "DatumRodjenja": "2000-04-08",
+    "ElektronskaPosta": "jelena.jelenic@email.com",
+    "ListaIspita": []
+  }
+]

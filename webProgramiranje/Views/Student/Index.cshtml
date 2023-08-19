@@ -1,7 +1,35 @@
-﻿
+﻿@model List<webProgramiranje.Models.RezultatIspita>
+
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Pregled ispita";
 }
 
-<h2>Student</h2>
+<h2>Pregled mojih ispita</h2>
 
+<table class="table">
+    <thead>
+        <tr>
+            <th>Profesor</th>
+            <th>Predmet</th>
+            <th>Datum i vreme održavanja</th>
+            <th>Naziv učionice</th>
+            <th>Naziv ispitnog roka</th>
+            <th>Ocena</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var ispit in Model)
+        {
+            <tr>
+                <td>@ispit.Ispit.Profesor</td>
+                <td>@ispit.Ispit.Predmet</td>
+                <td>@ispit.Ispit.DatumIVremeOdrzavanja.ToString("dd.MM.yyyy HH:mm")</td>
+                <td>@ispit.Ispit.NazivUcionice</td>
+                <td>@ispit.Ispit.NazivIspitnogRoka</td>
+                <td>@(ispit.Ocena != 5 ? ispit.Ocena.ToString() : "")</td>
+                <td>@(ispit.Ocena > 5 ? "Položen" : "Nepoložen")</td>
+            </tr>
+        }
+    </tbody>
+</table>
