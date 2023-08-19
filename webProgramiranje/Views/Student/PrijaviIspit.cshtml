@@ -1,0 +1,48 @@
+﻿@model List<webProgramiranje.Models.Ispit>
+
+@{
+    ViewBag.Title = "Prijavi ispit";
+}
+
+<h2>Prijavi ispit</h2>
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["ErrorMessage"]
+    </div>
+}
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Profesor</th>
+            <th>Predmet</th>
+            <th>Datum i vreme održavanja</th>
+            <th>Naziv učionice</th>
+            <th>Naziv ispitnog roka</th>
+            <th>Prijavi</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var ispit in Model)
+        {
+            <tr>
+                <td>@ispit.Profesor</td>
+                <td>@ispit.Predmet</td>
+                <td>@ispit.DatumIVremeOdrzavanja.ToString("dd.MM.yyyy HH:mm")</td>
+                <td>@ispit.NazivUcionice</td>
+                <td>@ispit.NazivIspitnogRoka</td>
+                <td>
+                    @Html.ActionLink("Student", "PotvrdaPrijave", new { id = ispit.Id }, new { @class = "btn btn-primary" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

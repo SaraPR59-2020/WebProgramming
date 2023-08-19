@@ -8,6 +8,8 @@ namespace webProgramiranje.Models
 {
     public class Ispit
     {
+        public int Id { get; set; }
+
         [Required]
         public string Profesor { get; set; }
 
