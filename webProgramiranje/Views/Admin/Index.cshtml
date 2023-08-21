@@ -1,7 +1,33 @@
-﻿
-@{
-    ViewBag.Title = "Index";
-}
-
-<h2>Admin</h2>
-
+﻿@model List<webProgramiranje.Models.Student>
+<h2>Pregled studenata</h2>
+<a href="@Url.Action("CreateStudent")" class="btn btn-primary">Kreiraj studenta</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Korisnicko ime</th>
+            <th>Ime</th>
+            <th>Prezime</th>
+            <th>Email</th>
+            <th>Broj indeksa</th>
+            <th>Datum Rodjenja</th>
+            <th>Akcije</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var student in Model)
+        {
+            <tr>
+                <td>@student.KorisnickoIme</td>
+                <td>@student.Ime</td>
+                <td>@student.Prezime</td>
+                <td>@student.ElektronskaPosta</td>
+                <td>@student.BrojIndeksa</td>
+                <td>@student.DatumRodjenja.ToString("dd.MM.yyyy")</td>
+                <td>
+                    <a href="@Url.Action("EditStudent", new { username = student.KorisnickoIme })" class="btn btn-warning">Izmeni</a>
+                    <a href="@Url.Action("DeleteStudent", new { username = student.KorisnickoIme })" class="btn btn-danger">Obriši</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

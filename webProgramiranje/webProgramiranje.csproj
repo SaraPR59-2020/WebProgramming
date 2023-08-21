@@ -169,13 +169,14 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\Prijava.cshtml" />
     <Content Include="Views\Profesor\Index.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Student\Index.cshtml" />
     <Content Include="Views\Student\PrijaviIspit.cshtml" />
     <Content Include="Views\Profesor\CreateIspit.cshtml" />
     <Content Include="Views\Profesor\OcenjivanjeIspita.cshtml" />
+    <Content Include="Views\Admin\CreateStudent.cshtml" />
+    <Content Include="Views\Admin\EditStudent.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

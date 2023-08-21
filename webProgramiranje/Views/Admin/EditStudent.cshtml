@@ -1,0 +1,32 @@
+﻿@model webProgramiranje.Models.Student
+
+<h2>Izmeni studenta</h2>
+
+@using (Html.BeginForm())
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.Ime)
+        @Html.TextBoxFor(m => m.Ime, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Ime)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Prezime)
+        @Html.TextBoxFor(m => m.Prezime, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Prezime)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.ElektronskaPosta)
+        @Html.TextBoxFor(m => m.ElektronskaPosta, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.ElektronskaPosta)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.DatumRodjenja)
+        @Html.TextBox("DatumRodjenja", Model.DatumRodjenja.ToString("yyyy-MM-dd"), new { @class = "form-control", type = "date" })
+        @Html.ValidationMessageFor(m => m.DatumRodjenja)
+    </div>
+    <div class="form-group">
+        @Html.HiddenFor(m => m.KorisnickoIme)
+        @Html.HiddenFor(m => m.BrojIndeksa)
+    </div>
+    <button type="submit" class="btn btn-primary">Sačuvaj izmene</button>
+}

@@ -1,0 +1,43 @@
+﻿@model webProgramiranje.Models.Student
+
+<h2>Kreiraj studenta</h2>
+
+@using (Html.BeginForm())
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.KorisnickoIme)
+        @Html.TextBoxFor(m => m.KorisnickoIme, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.KorisnickoIme)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Sifra)
+        @Html.PasswordFor(m => m.Sifra, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Sifra)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Ime)
+        @Html.TextBoxFor(m => m.Ime, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Ime)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Prezime)
+        @Html.TextBoxFor(m => m.Prezime, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Prezime)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.ElektronskaPosta)
+        @Html.TextBoxFor(m => m.ElektronskaPosta, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.ElektronskaPosta)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.BrojIndeksa)
+        @Html.TextBoxFor(m => m.BrojIndeksa, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.BrojIndeksa)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.DatumRodjenja)
+        @Html.TextBoxFor(m => m.DatumRodjenja, new { @class = "form-control", type = "date" })
+        @Html.ValidationMessageFor(m => m.DatumRodjenja)
+    </div>
+    <button type="submit" class="btn btn-primary">Kreiraj</button>
+}

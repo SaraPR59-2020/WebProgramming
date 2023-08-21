@@ -16,11 +16,58 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Studentska Sluzba", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
+                @if (Session["Username"] != null)
+                {
+                    var userRole = Session["UserRole"] as string;
+                    if (userRole == "Student")
+                    {
+                        @Html.ActionLink("Studentska Sluzba", "Index", "Student", new { area = "" }, new { @class = "navbar-brand" })
+                    }
+                    else if (userRole == "Profesor")
+                    {
+                        @Html.ActionLink("Studentska Sluzba", "Index", "Profesor", new { area = "" }, new { @class = "navbar-brand" })
+                    }
+                    else if (userRole == "Administrator")
+                    {
+                        @Html.ActionLink("Studentska Sluzba", "Index", "Admin", new { area = "" }, new { @class = "navbar-brand" })
+                    }
+
+                }
+                else
+                {
+                    @Html.ActionLink("Studentska Sluzba", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                }
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+
+
+                    @if (Session["Username"] != null)
+                    {
+                        var userRole = Session["UserRole"] as string;
+                        if (userRole == "Student")
+                        {
+                            <li>@Html.ActionLink("Home", "Index", "Student")</li>
+                            <li>@Html.ActionLink("Prijava Ispita", "PrijaviIspit", "Student")</li>
+                        }
+                        else if (userRole == "Profesor")
+                        {
+                            <li>@Html.ActionLink("Home", "Index", "Profesor")</li>
+                            <li>@Html.ActionLink("Kreiraj Ispit", "CreateIspit", "Profesor")</li>
+                            <li>@Html.ActionLink("Oceni Ispite", "OcenjivanjeIspita", "Profesor")</li>
+                        }
+                        else if (userRole == "Administrator")
+                        {
+                            <li>@Html.ActionLink("Home", "Index", "Admin")</li>
+                        }
+
+                        <li>@Html.ActionLink("Odjavi se", "Logout", "Home")</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    }
                 </ul>
             </div>
         </div>

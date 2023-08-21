@@ -62,6 +62,11 @@ namespace webProgramiranje.Controllers
 
             return RedirectToAction("Index", "Home");
         }
+        public ActionResult Logout()
+        {
+            Session.Clear(); // Uklanja sve vrednosti iz sesije
+            return RedirectToAction("Index", "Home");
+        }
 
     }
 }
