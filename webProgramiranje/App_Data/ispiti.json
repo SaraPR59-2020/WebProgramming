@@ -14,5 +14,13 @@
     "DatumIVremeOdrzavanja": "2023-09-01T20:00:00",
     "NazivUcionice": "a1",
     "NazivIspitnogRoka": "septembar"
+  },
+  {
+    "Id": 2,
+    "Profesor": "marko123",
+    "Predmet": "Statistika",
+    "DatumIVremeOdrzavanja": "2024-01-24T00:00:00",
+    "NazivUcionice": "1",
+    "NazivIspitnogRoka": "2"
   }
 ]

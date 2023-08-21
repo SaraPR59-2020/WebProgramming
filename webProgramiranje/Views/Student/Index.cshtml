@@ -3,7 +3,83 @@
 @{
     ViewBag.Title = "Pregled ispita";
 }
+<style>
+    body {
+        background-image: linear-gradient(135deg, #eeeee4 10%, #0e0700 100%);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        font-family: "Open Sans", sans-serif;
+        color: #333333;
+    }
 
+    h2 {
+        text-align: center;
+        margin-top: 20px;
+        margin-bottom: 40px;
+    }
+
+    form {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        width: 80%;
+        margin: auto;
+        background-color: #FFFFFF;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 0 20px 6px #9f9c99;
+    }
+
+    .filter-section {
+        flex: 1;
+        min-width: calc(33.33% - 20px); /* Širina svakog deljenja filtera */
+        box-sizing: border-box;
+    }
+
+        .filter-section:last-child {
+            flex-basis: 100%; /* Poslednji deo sa sortiranjem zauzima punu širinu */
+        }
+
+    .form-control {
+        width: 100%;
+        padding: 1px;
+        font-size: 16px;
+        border: none;
+        outline: none;
+        border-bottom: 2px solid #B0B3B9;
+        margin-bottom: 15px;
+        margin-right: 15px;
+    }
+
+    .btn-primary {
+        float: right;
+        color: #fff;
+        font-size: 16px;
+        padding: 12px 35px;
+        border-radius: 50px;
+        display: inline-block;
+        border: 0;
+        outline: 0;
+        background-image: linear-gradient(135deg, #B0B3B9 10%, #eeeee4 100%);
+    }
+
+    table {
+        width: 90%;
+        margin: 40px auto;
+        background-color: #FFFFFF;
+        border-radius: 10px;
+        box-shadow: 0 0 20px 6px #9f9c99;
+    }
+
+    thead {
+        background-color: #9f9c99;
+    }
+
+    th, td {
+        padding: 10px 20px;
+    }
+</style>
 <h2>Pregled mojih ispita</h2>
 
 @using (Html.BeginForm("FilterAndSortExams", "Student", FormMethod.Post))
