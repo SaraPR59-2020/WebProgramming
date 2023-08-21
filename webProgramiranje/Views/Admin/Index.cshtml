@@ -1,5 +1,27 @@
 ﻿@model List<webProgramiranje.Models.Student>
 <h2>Pregled studenata</h2>
+
+
+<form method="post" action="@Url.Action("FilterAndSort")">
+    Filtriraj po:
+    <input type="text" name="imeFilter" placeholder="Ime" />
+    <input type="text" name="prezimeFilter" placeholder="Prezime" />
+    <input type="text" name="indeksFilter" placeholder="Broj indeksa" />
+
+    Sortiraj po:
+    <select name="sortCriteria">
+        <option value="Ime">Ime</option>
+        <option value="Prezime">Prezime</option>
+        <option value="BrojIndeksa">Broj indeksa</option>
+    </select>
+
+    <select name="sortDirection">
+        <option value="asc">Rastuće</option>
+        <option value="desc">Opadajuće</option>
+    </select>
+
+    <button type="submit" class="btn btn-default">Primeni</button>
+</form>
 <a href="@Url.Action("CreateStudent")" class="btn btn-primary">Kreiraj studenta</a>
 <table class="table">
     <thead>

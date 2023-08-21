@@ -1,10 +1,59 @@
-﻿@model List<webProgramiranje.Models.Ispit>
+﻿@model List<webProgramiranje.Models.RezultatIspita>
 
 @{
     ViewBag.Title = "Pregled ispita";
 }
 
 <h2>Pregled ispita</h2>
+
+<form action="@Url.Action("FilterAndSortExams", "Profesor")" method="post">
+    <div>
+        Filtriraj po ispitnom roku:
+        <input type="text" name="rokFilter" placeholder="Unesite ispitni rok..." />
+    </div>
+    <div>
+        Filtriraj po predmetu:
+        <input type="text" name="predmetFilter" placeholder="Unesite predmet..." />
+    </div>
+    <div>
+        Filtriraj po oceni:
+        <input type="number" name="ocenaFilter" min="5" max="10" placeholder="Unesite ocenu..." />
+    </div>
+    <div>
+        Filtriraj po imenu studenta:
+        <input type="text" name="imeFilter" placeholder="Unesite ime..." />
+    </div>
+    <div>
+        Filtriraj po prezimenu studenta:
+        <input type="text" name="prezimeFilter" placeholder="Unesite prezime..." />
+    </div>
+    <div>
+        Filtriraj po indeksu studenta:
+        <input type="text" name="indeksFilter" placeholder="Unesite broj indeksa..." />
+    </div>
+    <div>
+        Sortiraj po:
+        @Html.DropDownList("sortCriteria", new List<SelectListItem>
+        {
+            new SelectListItem { Text = "Ispitnom roku", Value = "Rok" },
+            new SelectListItem { Text = "Predmetu", Value = "Predmet" },
+            new SelectListItem { Text = "Oceni", Value = "Ocena" },
+            new SelectListItem { Text = "Imenu studenta", Value = "Ime" },
+            new SelectListItem { Text = "Prezimenu studenta", Value = "Prezime" },
+            new SelectListItem { Text = "Indeksu studenta", Value = "Indeks" },
+        }, "Izaberite", new { @class = "form-control" })
+
+        @Html.DropDownList("sortOrder", new List<SelectListItem>
+        {
+            new SelectListItem { Text = "Rastuće", Value = "Asc" },
+            new SelectListItem { Text = "Opadajuće", Value = "Desc" }
+        }, "Izaberite", new { @class = "form-control" })
+    </div>
+    <div>
+        <input type="submit" value="Primeni filtere i sortiranje" class="btn btn-primary" />
+    </div>
+</form>
+
 
 <table class="table">
     <thead>
@@ -14,17 +63,23 @@
             <th>Datum i vreme održavanja</th>
             <th>Naziv učionice</th>
             <th>Naziv ispitnog roka</th>
+            <th>Ime Studenta</th>
+            <th>Prezime Studenta</th>
+            <th>Broj Indexa Studenta</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var ispit in Model)
         {
             <tr>
-                <td>@ispit.Profesor</td>
-                <td>@ispit.Predmet</td>
-                <td>@ispit.DatumIVremeOdrzavanja.ToString("dd.MM.yyyy HH:mm")</td>
-                <td>@ispit.NazivUcionice</td>
-                <td>@ispit.NazivIspitnogRoka</td>
+                <td>@ispit.Ispit.Profesor</td>
+                <td>@ispit.Ispit.Predmet</td>
+                <td>@ispit.Ispit.DatumIVremeOdrzavanja.ToString("dd.MM.yyyy HH:mm")</td>
+                <td>@ispit.Ispit.NazivUcionice</td>
+                <td>@ispit.Ispit.NazivIspitnogRoka</td>
+                <td>@ispit.Student.Ime</td>
+                <td>@ispit.Student.Prezime</td>
+                <td>@ispit.Student.BrojIndeksa</td>
             </tr>
         }
     </tbody>

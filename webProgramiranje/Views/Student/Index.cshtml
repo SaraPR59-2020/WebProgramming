@@ -6,6 +6,41 @@
 
 <h2>Pregled mojih ispita</h2>
 
+@using (Html.BeginForm("FilterAndSortExams", "Student", FormMethod.Post))
+{
+    <div class="row">
+        <div class="col-md-3">
+            Filtriraj po ispitnom roku:
+            @Html.TextBox("rokFilter", null, new { @class = "form-control" })
+        </div>
+        <div class="col-md-3">
+            Filtriraj po nazivu predmeta:
+            @Html.TextBox("predmetFilter", null, new { @class = "form-control" })
+        </div>
+        <div class="col-md-3">
+            Filtriraj po oceni:
+            @Html.TextBox("ocenaFilter", null, new { @class = "form-control" })
+        </div>
+        <div class="col-md-3">
+            Sortiraj po:
+            @Html.DropDownList("sortCriteria", new List<SelectListItem>
+            {
+                new SelectListItem { Text = "Ispitnom roku", Value = "Rok" },
+                new SelectListItem { Text = "Nazivu predmeta", Value = "Predmet" },
+                new SelectListItem { Text = "Oceni", Value = "Ocena" }
+            }, "Izaberite", new { @class = "form-control" })
+            @Html.DropDownList("sortOrder", new List<SelectListItem>
+{
+    new SelectListItem { Text = "Rastuće", Value = "Asc" },
+    new SelectListItem { Text = "Opadajuće", Value = "Desc" }
+}, "Izaberite", new { @class = "form-control" })
+            <br />
+            <button type="submit" class="btn btn-primary">Primeni filtere i sortiranje</button>
+        </div>
+    </div>
+    <hr />
+}
+
 <table class="table">
     <thead>
         <tr>

@@ -22,7 +22,8 @@
 <table class="table">
     <thead>
         <tr>
-            <th>Student</th>
+            <th>Student Ime</th>
+            <th>Student Prezime</th>
             <th>Ispit</th>
             <th>Trenutna Ocena</th>
             <th>Ocenjivanje</th>
@@ -32,7 +33,8 @@
         @foreach (var rezultat in Model)
         {
             <tr>
-                <td>@rezultat.Student</td>
+                <td>@rezultat.Student.Ime</td>
+                <td>@rezultat.Student.Prezime</td>
                 <td>@rezultat.Ispit.Predmet</td>
                 <td>@rezultat.Ocena</td>
                 <td>

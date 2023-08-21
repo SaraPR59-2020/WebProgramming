@@ -102,5 +102,49 @@ namespace webProgramiranje.Controllers
             _students.WriteToFile(allStudents);
             return RedirectToAction("Index");
         }
+
+        [HttpPost]
+        public ActionResult FilterAndSort(string imeFilter, string prezimeFilter, string indeksFilter, string sortCriteria, string sortDirection)
+        {
+            // Dobavljanje svih studenata
+            var studenti = _students.ReadFromFile().ToList();
+
+            // Filtriranje
+            if (!string.IsNullOrEmpty(imeFilter))
+            {
+                studenti = studenti.Where(s => s.Ime.ToLower().Contains(imeFilter.ToLower())).ToList();
+            }
+
+            if (!string.IsNullOrEmpty(prezimeFilter))
+            {
+                studenti = studenti.Where(s => s.Prezime.ToLower().Contains(prezimeFilter.ToLower())).ToList();
+            }
+
+            if (!string.IsNullOrEmpty(indeksFilter))
+            {
+                studenti = studenti.Where(s => s.BrojIndeksa.ToLower().Contains(indeksFilter.ToLower())).ToList();
+            }
+
+            // Sortiranje
+            switch (sortCriteria)
+            {
+                case "Ime":
+                    studenti = (sortDirection == "asc") ? studenti.OrderBy(s => s.Ime).ToList() : studenti.OrderByDescending(s => s.Ime).ToList();
+                    break;
+
+                case "Prezime":
+                    studenti = (sortDirection == "asc") ? studenti.OrderBy(s => s.Prezime).ToList() : studenti.OrderByDescending(s => s.Prezime).ToList();
+                    break;
+
+                case "BrojIndeksa":
+                    studenti = (sortDirection == "asc") ? studenti.OrderBy(s => s.BrojIndeksa).ToList() : studenti.OrderByDescending(s => s.BrojIndeksa).ToList();
+                    break;
+            }
+
+            // Vraćanje rezultata
+            return View("Index", studenti);
+        }
+
+
     }
 }

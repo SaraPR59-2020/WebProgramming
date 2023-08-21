@@ -18,7 +18,10 @@
     "DatumRodjenja": "2023-08-11T00:00:00",
     "ElektronskaPosta": "marko.markovic@email.com",
     "ListaIspita": [
-      0
+      0,
+      1,
+      0,
+      1
     ]
   }
 ]

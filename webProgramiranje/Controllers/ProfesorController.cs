@@ -33,8 +33,9 @@ namespace webProgramiranje.Controllers
             var ispiti = _ispiti.ReadFromFile();
             // Filtrirajte ispite na osnovu imena profesora
             var ispitiProfesora =ispiti != null ? ispiti.Where(i => i.Profesor.Equals(imeProfesora)).ToList():new List<Ispit>();
-
-            return View(ispitiProfesora);
+            var rez = _rezultati.ReadFromFile();
+            var rezProfesora = rez != null ? rez.Where(r => ispitiProfesora.Any(ip => ip.Id == r.Ispit.Id)).ToList() : new List<RezultatIspita>();
+            return View(rezProfesora);
         }
 
         // GET: Profesor/CreateIspit
@@ -116,5 +117,82 @@ namespace webProgramiranje.Controllers
 
             return RedirectToAction("OcenjivanjeIspita");
         }
+
+        [HttpPost]
+        public ActionResult FilterAndSortExams(string rokFilter, string predmetFilter, int? ocenaFilter, string imeFilter, string prezimeFilter, string indeksFilter, string sortCriteria, string sortOrder)
+        {
+            // Ova linija je pretpostavka. Morate je zameniti sa stvarnim kodom koji će dohvatiti sve ispite za trenutnog profesora.
+            var sviIspiti = _ispiti.ReadFromFile();
+            // Filtrirajte ispite na osnovu imena profesora
+            var ispitiProfesora = sviIspiti != null ? sviIspiti.Where(i => i.Profesor.Equals(HttpContext.Session["Username"].ToString())).ToList() : new List<Ispit>();
+            var rez = _rezultati.ReadFromFile();
+            var ispiti = rez != null ? rez.Where(r => ispitiProfesora.Any(ip => ip.Id == r.Ispit.Id)).ToList() : new List<RezultatIspita>();
+
+            // Filtriranje
+            if (!string.IsNullOrEmpty(rokFilter))
+            {
+                ispiti = ispiti.Where(i => i.Ispit.NazivIspitnogRoka.ToLower().Contains(rokFilter)).ToList();
+            }
+            if (!string.IsNullOrEmpty(predmetFilter))
+            {
+                ispiti = ispiti.Where(i => i.Ispit.Predmet.ToLower().Contains(predmetFilter)).ToList();
+            }
+            if (ocenaFilter.HasValue)
+            {
+                ispiti = ispiti.Where(i => i.Ocena == ocenaFilter.Value).ToList();
+            }
+            if (!string.IsNullOrEmpty(imeFilter))
+            {
+                // Ova linija je pretpostavka. Ako imate različitu strukturu modela, prilagodite je.
+                ispiti = ispiti.Where(i => i.Student.Ime.ToLower().Contains(imeFilter)).ToList();
+            }
+            if (!string.IsNullOrEmpty(prezimeFilter))
+            {
+                // Slično kao za ime
+                ispiti = ispiti.Where(i => i.Student.Prezime.ToLower().Contains(prezimeFilter)).ToList();
+            }
+            if (!string.IsNullOrEmpty(indeksFilter))
+            {
+                // Slično kao za ime
+                ispiti = ispiti.Where(i => i.Student.BrojIndeksa.ToLower().Contains(indeksFilter)).ToList();
+            }
+
+            // Sortiranje
+            Func<RezultatIspita, object> orderFunc = i => i.Ispit.NazivIspitnogRoka; // Defaultno sortiranje po ispitnom roku
+
+            switch (sortCriteria)
+            {
+                case "Rok":
+                    orderFunc = i => i.Ispit.NazivIspitnogRoka;
+                    break;
+                case "Predmet":
+                    orderFunc = i => i.Ispit.Predmet;
+                    break;
+                case "Ocena":
+                    orderFunc = i => i.Ocena;
+                    break;
+                case "Ime":
+                    orderFunc = i => i.Student.Ime; // Pretpostavka je da ispit ima referencu na studenta
+                    break;
+                case "Prezime":
+                    orderFunc = i => i.Student.Prezime; // Slično kao za ime
+                    break;
+                case "Indeks":
+                    orderFunc = i => i.Student.BrojIndeksa; // Slično kao za ime i prezime
+                    break;
+            }
+
+            if (sortOrder == "Asc")
+            {
+                ispiti = ispiti.OrderBy(orderFunc).ToList();
+            }
+            else
+            {
+                ispiti = ispiti.OrderByDescending(orderFunc).ToList();
+            }
+
+            return View("Index", ispiti);
+        }
+
     }
 }
