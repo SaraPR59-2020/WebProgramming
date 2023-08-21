@@ -1,7 +1,31 @@
-﻿
+﻿@model List<webProgramiranje.Models.Ispit>
+
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Pregled ispita";
 }
 
-<h2>Profesor</h2>
+<h2>Pregled ispita</h2>
 
+<table class="table">
+    <thead>
+        <tr>
+            <th>Profesor</th>
+            <th>Predmet</th>
+            <th>Datum i vreme održavanja</th>
+            <th>Naziv učionice</th>
+            <th>Naziv ispitnog roka</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var ispit in Model)
+        {
+            <tr>
+                <td>@ispit.Profesor</td>
+                <td>@ispit.Predmet</td>
+                <td>@ispit.DatumIVremeOdrzavanja.ToString("dd.MM.yyyy HH:mm")</td>
+                <td>@ispit.NazivUcionice</td>
+                <td>@ispit.NazivIspitnogRoka</td>
+            </tr>
+        }
+    </tbody>
+</table>

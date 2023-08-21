@@ -8,6 +8,7 @@ namespace webProgramiranje.Models
 {
     public class RezultatIspita
     {
+        public int Id { get; set; }
         [Required]
         public Ispit Ispit { get; set; }
 

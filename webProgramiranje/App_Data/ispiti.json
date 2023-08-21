@@ -1,0 +1,18 @@
+[
+  {
+    "Id": 0,
+    "Profesor": "marko123",
+    "Predmet": "Matematika",
+    "DatumIVremeOdrzavanja": "2023-09-01T15:00:00",
+    "NazivUcionice": "a1",
+    "NazivIspitnogRoka": "Jul"
+  },
+  {
+    "Id": 1,
+    "Profesor": "marko123",
+    "Predmet": "Statistika",
+    "DatumIVremeOdrzavanja": "2023-09-01T20:00:00",
+    "NazivUcionice": "a1",
+    "NazivIspitnogRoka": "septembar"
+  }
+]

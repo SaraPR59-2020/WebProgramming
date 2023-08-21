@@ -1,0 +1,55 @@
+﻿@model List<webProgramiranje.Models.RezultatIspita>
+@{
+    ViewBag.Title = "Ocenjivanje ispita";
+}
+
+<h2>Ocenjivanje ispita</h2>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["ErrorMessage"]
+    </div>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Student</th>
+            <th>Ispit</th>
+            <th>Trenutna Ocena</th>
+            <th>Ocenjivanje</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var rezultat in Model)
+        {
+            <tr>
+                <td>@rezultat.Student</td>
+                <td>@rezultat.Ispit.Predmet</td>
+                <td>@rezultat.Ocena</td>
+                <td>
+                    <form action="/Profesor/OcenjivanjeIspita" method="post">
+                        <input type="hidden" name="id" value="@rezultat.Ispit.Id" />
+                        <select name="ocena">
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                        <input type="submit" value="Oceni" />
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

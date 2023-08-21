@@ -46,6 +46,6 @@ namespace webProgramiranje.Models
         [Display(Name = "Elektronska pošta")]
         public string ElektronskaPosta { get; set; }
 
-        public List<RezultatIspita> ListaIspita { get; set; }
+        public List<int> ListaIspita { get; set; }
     }
 }

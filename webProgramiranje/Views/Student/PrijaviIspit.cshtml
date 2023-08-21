@@ -3,6 +3,11 @@
 @{
     ViewBag.Title = "Prijavi ispit";
 }
+<style>
+    .inline-form {
+        display: inline-block;
+    }
+</style>
 
 <h2>Prijavi ispit</h2>
 
@@ -14,7 +19,7 @@
 }
 @if (TempData["SuccessMessage"] != null)
 {
-    <div class="alert alert-danger">
+    <div class="alert alert-success">
         @TempData["SuccessMessage"]
     </div>
 }
@@ -38,9 +43,13 @@
                 <td>@ispit.Predmet</td>
                 <td>@ispit.DatumIVremeOdrzavanja.ToString("dd.MM.yyyy HH:mm")</td>
                 <td>@ispit.NazivUcionice</td>
-                <td>@ispit.NazivIspitnogRoka</td>
+                <td>@ispit.NazivIspitnogRoka @ispit.Id</td>
                 <td>
-                    @Html.ActionLink("Student", "PotvrdaPrijave", new { id = ispit.Id }, new { @class = "btn btn-primary" })
+                    @using (Html.BeginForm("PrijaviIspit", "Student", new { id = ispit.Id }, FormMethod.Post, new { @class = "inline-form" }))
+                    {
+                        <input type="submit" value="Prijavi" class="btn btn-primary" />
+                    }
+
                 </td>
             </tr>
         }
