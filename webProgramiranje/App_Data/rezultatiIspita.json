@@ -1,5 +1,30 @@
 [
   {
+    "Id": 0,
+    "Ispit": {
+      "Id": 0,
+      "Profesor": "marko123",
+      "Predmet": "Matematika",
+      "DatumIVremeOdrzavanja": "2023-09-01T15:00:00",
+      "NazivUcionice": "a1",
+      "NazivIspitnogRoka": "Jul"
+    },
+    "Student": {
+      "KorisnickoIme": "2",
+      "BrojIndeksa": "2023/001",
+      "Sifra": "2",
+      "Ime": "Marko",
+      "Prezime": "Marković",
+      "DatumRodjenja": "2023-08-11T00:00:00",
+      "ElektronskaPosta": "marko.markovic@email.com",
+      "ListaIspita": [
+        0,
+        1
+      ]
+    },
+    "Ocena": 8
+  },
+  {
     "Id": 1,
     "Ispit": {
       "Id": 1,
@@ -21,31 +46,6 @@
         0,
         1,
         0
-      ]
-    },
-    "Ocena": 5
-  },
-  {
-    "Id": 0,
-    "Ispit": {
-      "Id": 0,
-      "Profesor": "marko123",
-      "Predmet": "Matematika",
-      "DatumIVremeOdrzavanja": "2023-09-01T15:00:00",
-      "NazivUcionice": "a1",
-      "NazivIspitnogRoka": "Jul"
-    },
-    "Student": {
-      "KorisnickoIme": "2",
-      "BrojIndeksa": "2023/001",
-      "Sifra": "2",
-      "Ime": "Marko",
-      "Prezime": "Marković",
-      "DatumRodjenja": "2023-08-11T00:00:00",
-      "ElektronskaPosta": "marko.markovic@email.com",
-      "ListaIspita": [
-        0,
-        1
       ]
     },
     "Ocena": 8

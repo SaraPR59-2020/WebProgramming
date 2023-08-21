@@ -4,34 +4,110 @@
     ViewBag.Title = "Pregled ispita";
 }
 
-<h2>Pregled ispita</h2>
+<style>
+    body {
+        background-image: linear-gradient(135deg, #eeeee4 10%, #0e0700 100%);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        font-family: "Open Sans", sans-serif;
+        color: #333333;
+    }
 
+    h2 {
+        text-align: center;
+        margin-top: 20px;
+        margin-bottom: 40px;
+    }
+
+    form {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        width: 80%;
+        margin: auto;
+        background-color: #FFFFFF;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 0 20px 6px #9f9c99;
+    }
+
+    .filter-section {
+        flex: 1;
+        min-width: calc(33.33% - 20px); /* Širina svakog deljenja filtera */
+        box-sizing: border-box;
+    }
+
+        .filter-section:last-child {
+            flex-basis: 100%; /* Poslednji deo sa sortiranjem zauzima punu širinu */
+        }
+
+    .form-control {
+        width: 100%;
+        padding: 1px;
+        font-size: 16px;
+        border: none;
+        outline: none;
+        border-bottom: 2px solid #B0B3B9;
+        margin-bottom: 15px;
+        margin-right: 15px;
+    }
+
+    .btn-primary {
+        float: right;
+        color: #fff;
+        font-size: 16px;
+        padding: 12px 35px;
+        border-radius: 50px;
+        display: inline-block;
+        border: 0;
+        outline: 0;
+        background-image: linear-gradient(135deg, #B0B3B9 10%, #eeeee4 100%);
+    }
+
+    table {
+        width: 90%;
+        margin: 40px auto;
+        background-color: #FFFFFF;
+        border-radius: 10px;
+        box-shadow: 0 0 20px 6px #9f9c99;
+    }
+
+    thead {
+        background-color: #9f9c99;
+    }
+
+    th, td {
+        padding: 10px 20px;
+    }
+</style>
+<h2>Pregled ispita</h2>
 <form action="@Url.Action("FilterAndSortExams", "Profesor")" method="post">
-    <div>
+    <div class="filter-section">
         Filtriraj po ispitnom roku:
-        <input type="text" name="rokFilter" placeholder="Unesite ispitni rok..." />
+        <input type="text" name="rokFilter" placeholder="Unesite ispitni rok..." class="form-control" />
     </div>
-    <div>
+    <div class="filter-section">
         Filtriraj po predmetu:
-        <input type="text" name="predmetFilter" placeholder="Unesite predmet..." />
+        <input type="text" name="predmetFilter" placeholder="Unesite predmet..." class="form-control" />
     </div>
-    <div>
+    <div class="filter-section">
         Filtriraj po oceni:
-        <input type="number" name="ocenaFilter" min="5" max="10" placeholder="Unesite ocenu..." />
+        <input type="number" name="ocenaFilter" min="5" max="10" placeholder="Unesite ocenu..." class="form-control" />
     </div>
-    <div>
+    <div class="filter-section">
         Filtriraj po imenu studenta:
-        <input type="text" name="imeFilter" placeholder="Unesite ime..." />
+        <input type="text" name="imeFilter" placeholder="Unesite ime..." class="form-control" />
     </div>
-    <div>
+    <div class="filter-section">
         Filtriraj po prezimenu studenta:
-        <input type="text" name="prezimeFilter" placeholder="Unesite prezime..." />
+        <input type="text" name="prezimeFilter" placeholder="Unesite prezime..." class="form-control" />
     </div>
-    <div>
+    <div class="filter-section">
         Filtriraj po indeksu studenta:
-        <input type="text" name="indeksFilter" placeholder="Unesite broj indeksa..." />
+        <input type="text" name="indeksFilter" placeholder="Unesite broj indeksa..." class="form-control" />
     </div>
-    <div>
+    <div class="filter-section">
         Sortiraj po:
         @Html.DropDownList("sortCriteria", new List<SelectListItem>
         {
@@ -49,11 +125,10 @@
             new SelectListItem { Text = "Opadajuće", Value = "Desc" }
         }, "Izaberite", new { @class = "form-control" })
     </div>
-    <div>
+    <div class="filter-section">
         <input type="submit" value="Primeni filtere i sortiranje" class="btn btn-primary" />
     </div>
 </form>
-
 
 <table class="table">
     <thead>
