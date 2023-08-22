@@ -22,7 +22,8 @@ namespace webProgramiranje.Controllers
         public ActionResult Index()
         {
             var allStudents = _students.ReadFromFile();
-            return View(allStudents);
+            var std = allStudents != null ? allStudents.ToList() : new List<Student>() ;
+            return View(std);
         }
 
         public ActionResult CreateStudent()
@@ -33,7 +34,7 @@ namespace webProgramiranje.Controllers
         [HttpPost]
         public ActionResult CreateStudent(Student student)
         {
-            var allStudents = _students.ReadFromFile().ToList();
+            var allStudents = _students.ReadFromFile()!=null? _students.ReadFromFile().ToList() : new List<Student>();
 
             if (allStudents.Any(s => s.ElektronskaPosta == student.ElektronskaPosta ||
                                      s.KorisnickoIme == student.KorisnickoIme ||
@@ -42,7 +43,7 @@ namespace webProgramiranje.Controllers
                 ModelState.AddModelError("", "Student sa ovom email adresom, korisničkim imenom ili brojem indeksa već postoji.");
                 return View(student);
             }
-
+            student.ListaIspita = new List<int>();
             allStudents.Add(student);
             _students.WriteToFile(allStudents);
             return RedirectToAction("Index");
@@ -107,7 +108,7 @@ namespace webProgramiranje.Controllers
         public ActionResult FilterAndSort(string imeFilter, string prezimeFilter, string indeksFilter, string sortCriteria, string sortDirection)
         {
             // Dobavljanje svih studenata
-            var studenti = _students.ReadFromFile().ToList();
+            var studenti = _students.ReadFromFile() !=null? _students.ReadFromFile().ToList() :  new List<Student>(); 
 
             // Filtriranje
             if (!string.IsNullOrEmpty(imeFilter))

@@ -1,22 +1,12 @@
 ﻿[
   {
-    "KorisnickoIme": "marko123",
-    "Sifra": "markoPass123",
-    "Ime": "Marko",
-    "Prezime": "Marković",
-    "DatumRodjenja": "1975-03-15",
-    "ElektronskaPosta": "marko.markovic@email.com",
-    "ListaPredmeta": [ "Matematika", "Statistika" ],
-    "ListaIspita": []
-  },
-  {
-    "KorisnickoIme": "jelena456",
-    "Sifra": "jelenaPass456",
-    "Ime": "Jelena",
-    "Prezime": "Jelenić",
-    "DatumRodjenja": "1980-07-23",
-    "ElektronskaPosta": "jelena.jelenic@email.com",
-    "ListaPredmeta": [ "Fizika", "Astronomija" ],
+    "KorisnickoIme": "profesor",
+    "Sifra": "prof",
+    "Ime": "Profa",
+    "Prezime": "Profesor",
+    "DatumRodjenja": "1980-01-01",
+    "ElektronskaPosta": "prof@fakultet.com",
+    "ListaPredmeta": [ "Web Programiranje", "Baze podataka", "Sistemi za podršku odlučivanju" ],
     "ListaIspita": []
   }
 ]

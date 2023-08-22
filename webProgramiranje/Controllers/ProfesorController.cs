@@ -85,8 +85,8 @@ namespace webProgramiranje.Controllers
             var imeProfesora = HttpContext.Session["Username"].ToString();
 
             // Dohvatanje svih rezultata ispita koje je profesor zakazao
-            var ispitiProfesora = _ispiti.ReadFromFile().Where(i => i.Profesor.Equals(imeProfesora)).ToList();
-            var rezultatiIspita = _rezultati.ReadFromFile().Where(r => ispitiProfesora.Any(i => i.Id == r.Ispit.Id)).ToList();
+            var ispitiProfesora = _ispiti.ReadFromFile()!=null? _ispiti.ReadFromFile().Where(i => i.Profesor.Equals(imeProfesora)).ToList(): new List<Ispit>();
+            var rezultatiIspita = _rezultati.ReadFromFile() != null? _rezultati.ReadFromFile().Where(r => ispitiProfesora.Any(i => i.Id == r.Ispit.Id)).ToList(): new List<RezultatIspita>();
 
             return View(rezultatiIspita);
         }

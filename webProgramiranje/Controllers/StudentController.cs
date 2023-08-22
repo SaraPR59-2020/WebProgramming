@@ -77,7 +77,9 @@ namespace webProgramiranje.Controllers
         [HttpPost]
         public ActionResult FilterAndSortExams(string rokFilter, string predmetFilter, string ocenaFilter, string sortCriteria, string sortOrder)
         {
-            var ispiti = _rezultati.ReadFromFile().Where(r => r.Student.Equals(HttpContext.Session["Username"])).ToList();  // Ovo je pretpostavljena metoda za dobavljanje ispita
+            var student = _studenti.ReadFromFile().FirstOrDefault(p => p.KorisnickoIme.Equals(HttpContext.Session["Username"]));
+            var rez = _rezultati.ReadFromFile();
+            var ispiti = rez != null ? rez.Where(r => student.ListaIspita.Contains(r.Id)).ToList() : new List<RezultatIspita>();
 
             // Filtriranje
             if (!string.IsNullOrEmpty(rokFilter))
@@ -89,7 +91,7 @@ namespace webProgramiranje.Controllers
             if (!string.IsNullOrEmpty(ocenaFilter) && int.TryParse(ocenaFilter, out int ocena))
                 ispiti = ispiti.Where(i => i.Ocena == ocena).ToList();
 
-            Func<RezultatIspita, object> orderFunc = i => i.Ispit.NazivIspitnogRoka; // Defaultni poredak
+            Func<RezultatIspita, object> orderFunc = i => i.Ispit.NazivIspitnogRoka;
 
             switch (sortCriteria)
             {

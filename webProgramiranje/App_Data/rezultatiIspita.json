@@ -3,78 +3,24 @@
     "Id": 0,
     "Ispit": {
       "Id": 0,
-      "Profesor": "marko123",
-      "Predmet": "Matematika",
-      "DatumIVremeOdrzavanja": "2023-09-01T15:00:00",
+      "Profesor": "profesor",
+      "Predmet": "Web Programiranje",
+      "DatumIVremeOdrzavanja": "2023-09-15T20:00:00",
       "NazivUcionice": "a1",
       "NazivIspitnogRoka": "Jul"
     },
     "Student": {
-      "KorisnickoIme": "2",
-      "BrojIndeksa": "2023/001",
-      "Sifra": "2",
+      "KorisnickoIme": "student",
+      "BrojIndeksa": "22/2022",
+      "Sifra": "student",
       "Ime": "Marko",
       "Prezime": "Marković",
-      "DatumRodjenja": "2023-08-11T00:00:00",
-      "ElektronskaPosta": "marko.markovic@email.com",
+      "DatumRodjenja": "1999-01-01T00:00:00",
+      "ElektronskaPosta": "M@m.com",
       "ListaIspita": [
-        0,
         1
       ]
     },
     "Ocena": 8
-  },
-  {
-    "Id": 1,
-    "Ispit": {
-      "Id": 1,
-      "Profesor": "marko123",
-      "Predmet": "Statistika",
-      "DatumIVremeOdrzavanja": "2023-09-01T20:00:00",
-      "NazivUcionice": "a1",
-      "NazivIspitnogRoka": "septembar"
-    },
-    "Student": {
-      "KorisnickoIme": "2",
-      "BrojIndeksa": "2023/001",
-      "Sifra": "2",
-      "Ime": "Marko",
-      "Prezime": "Marković",
-      "DatumRodjenja": "2023-08-11T00:00:00",
-      "ElektronskaPosta": "marko.markovic@email.com",
-      "ListaIspita": [
-        0,
-        1,
-        0
-      ]
-    },
-    "Ocena": 8
-  },
-  {
-    "Id": 2,
-    "Ispit": {
-      "Id": 2,
-      "Profesor": "marko123",
-      "Predmet": "Statistika",
-      "DatumIVremeOdrzavanja": "2024-01-24T00:00:00",
-      "NazivUcionice": "1",
-      "NazivIspitnogRoka": "2"
-    },
-    "Student": {
-      "KorisnickoIme": "2",
-      "BrojIndeksa": "2023/001",
-      "Sifra": "2",
-      "Ime": "Marko",
-      "Prezime": "Marković",
-      "DatumRodjenja": "2023-08-11T00:00:00",
-      "ElektronskaPosta": "marko.markovic@email.com",
-      "ListaIspita": [
-        0,
-        1,
-        0,
-        1
-      ]
-    },
-    "Ocena": 5
   }
 ]
