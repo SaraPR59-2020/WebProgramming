@@ -1,6 +1,6 @@
 [
   {
-    "Id": 0,
+    "Id": 1,
     "Ispit": {
       "Id": 0,
       "Profesor": "profesor",
@@ -10,13 +10,13 @@
       "NazivIspitnogRoka": "Jul"
     },
     "Student": {
-      "KorisnickoIme": "student",
-      "BrojIndeksa": "22/2022",
-      "Sifra": "student",
-      "Ime": "Marko",
-      "Prezime": "Marković",
-      "DatumRodjenja": "1999-01-01T00:00:00",
-      "ElektronskaPosta": "M@m.com",
+      "KorisnickoIme": "s",
+      "BrojIndeksa": "s",
+      "Sifra": "s",
+      "Ime": "s",
+      "Prezime": "s",
+      "DatumRodjenja": "2023-08-09T00:00:00",
+      "ElektronskaPosta": "s",
       "ListaIspita": [
         1
       ]

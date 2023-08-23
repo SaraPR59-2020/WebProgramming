@@ -100,12 +100,12 @@ namespace webProgramiranje.Controllers
                 return RedirectToAction("OcenjivanjeIspita");
             }
 
-            var rezultat = _rezultati.ReadFromFile().FirstOrDefault(r => r.Ispit.Id == id);
+            var rezultat = _rezultati.ReadFromFile().FirstOrDefault(r => r.Id == id);
 
             if (rezultat != null)
             {
                 rezultat.Ocena = ocena;
-                var sviRezultati = _rezultati.ReadFromFile().Where(r => r.Ispit.Id != id).ToList();
+                var sviRezultati = _rezultati.ReadFromFile().Where(r => r.Id != id).ToList();
                 sviRezultati.Add(rezultat);
                 _rezultati.WriteToFile(sviRezultati);
                TempData["SuccessMessage"] = "Uspešno ste ocenili ispit!";
